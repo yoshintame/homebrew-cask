@@ -1,0 +1,17 @@
+name: Livecheck & bump outdated casks
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"  # every Monday at 09:00 UTC
+  workflow_dispatch:       # manual trigger
+
+jobs:
+  bump:
+    runs-on: macos-latest
+    steps:
+      - name: Bump outdated casks
+        uses: macauley/action-homebrew-bump-cask@v1
+        with:
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          tap: yoshintame/cask
+          livecheck: true
