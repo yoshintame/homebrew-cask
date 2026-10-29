@@ -9,7 +9,7 @@ cask "rar" do
 
   livecheck do
     url "https://www.rarlab.com/download.htm"
-    regex(/rarmacos-arm-(\d)(\d+)\.tar\.gz/i)
+    regex(/rarmacos-arm-(\d+)(\d{2})\.tar\.gz/i)
     strategy :page_match do |page, regex|
       page.scan(regex).map { |match| "#{match[0]}.#{match[1]}" }
     end
